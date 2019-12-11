@@ -1,0 +1,16 @@
+<div id="carouselExampleIndicators" class="carousel slide my-4" data-ride="carousel">
+        <ol class="carousel-indicators">
+
+        </ol>
+        <div class="carousel-inner" role="listbox">
+          <div class="carousel-item active">
+        {% if banner.banner %}
+            <img class="d-block img-fluid" src="{{ banner.banner.url }}" alt="First slide">
+        {% else %}
+            <img class="d-block img-fluid" src="https://img.kasa.cz/k-foto/ilustrace/1000/7/7/3/product_2580377.jpg" alt="Second slide">
+        {% endif %}
+          </div>
+
+        </div>
+        
+      </div>

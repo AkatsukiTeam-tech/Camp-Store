@@ -1,0 +1,92 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="{% block description %}{% endblock description %}">
+  <meta name="keywords" content="{% block keywords %}{% endblock keywords %}">
+  <meta name="author" content="">
+
+
+  <title>{% block title %}{% endblock title %}</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+
+  <!-- Custom styles for this template -->
+  <link href="{% static 'css/shop-homepage.css' %}" rel="stylesheet">
+
+</head>
+
+<body>
+
+  <!-- Navigation -->
+  {% block navbar %}
+  {% include 'include/navbar.html' %}
+  {% endblock navbar %}
+  <!-- Page Content -->
+  <div class="container">
+
+    <div class="row">
+      {% block sidebar_left %}
+      {% include 'include/sidebar_left.html' %}
+      {% endblock sidebar_left %}
+
+      <!-- /.col-lg-3 -->
+
+      <div class="col-lg-9">
+      {% block header %}
+      {% include 'include/header.html' %}
+      {% endblock header %}
+       
+      
+{% block content %}
+      
+
+          
+        <!-- /.row -->
+{% endblock content %}
+      </div>
+      <!-- /.col-lg-9 -->
+
+    </div>
+    <!-- /.row -->
+
+  </div>
+  <!-- /.container -->
+  <div class = "conteiner m-3">
+    <div class = "row justify-content-center">
+      <div class = "col-lg-6">
+        <div class = "mt-3 p-3 bg-dark text-white rounded">
+          <h3 class="my-1">Оставьте заявку на покупку</h3>
+          <form action="{% url 'feedback_view' %}" method = "POST">
+            {% csrf_token %}
+            <div class = "form-group">
+              <label for = "exampleInputEmail1">Ваше имя*</label>
+              <input name = "name" class = "form-control" id = "exampleInputEmail1" aria-describedby="emailHelp" placeholder="Введите ваше имя">
+            </div> 
+            <div class = "form-group">
+              <label for = "exampleInputPassword1">Ваш номер телефона*</label>
+              <input name = "phone" type = "text" class = "form-control" id = "exampleInpuPassword1" placeholder="Введите ваш номер телефона">
+            </div>
+            <button type="submit" class="btn btn-primary">Перезвонить</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Footer -->
+  {% block footer %}
+  {% include 'include/footer.html' %}
+  {% endblock footer %}
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+  <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+
+</body>
+
+</html>

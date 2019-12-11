@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% load banner %}
+
+
+<meta name="description" content="{% block description %}{{ service_category.first.category.description }}{% endblock description %}">
+<meta name="keywords" content="{% block keywords %}{{ service_category.first.category.keywords }}{% endblock keywords %}">
+
+<title>{% block title %}{{ service_category.first.category.title }}{% endblock title %}</title>
+
+{% block header %}
+{% banner_tag service_category.first.category %}
+{% endblock header %}
+
+{% block content %}
+
+{% for model in service_category %}
+<div class="row">
+
+    <div class="col-lg-4 col-md-6 mb-4">
+      <div class="card h-100">
+        {% if model.images  %}
+        <a href="{{ model.get_absolute_url }}"><img class="card-img-top" src="{{ model.images.url }}" alt=""></a>
+        {% endif %}
+        <div class="card-body">
+          <h4 class="card-title">
+            <a href="{{ model.get_absolute_url }}">{{ model.name }}</a>
+          </h4>
+          <h5>{{ model.price }}</h5>
+          <p class="{{ model.sub_header }}">{{ model.sub_header }}</p>
+          </div>
+          <div class="card-footer">
+            <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
+          </div>
+        </div>
+      </div>
+
+
+  </div>
+
+{% endfor %}
+
+{% endblock content %}
